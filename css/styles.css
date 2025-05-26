@@ -11733,3 +11733,69 @@ html {
     left: -2vw;
   }
 }
+
+/* Animaciones para las cards */
+@keyframes card-float {
+  0% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.12);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 1.5rem 2rem rgba(40, 120, 255, 0.08);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.12);
+  }
+}
+
+@keyframes card-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(40, 120, 255, 0.10);
+  }
+  50% {
+    box-shadow: 0 0 16px 4px rgba(40, 120, 255, 0.20);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(40, 120, 255, 0.10);
+  }
+}
+
+@keyframes card-border {
+  0% {
+    border-color: #cfe2ff;
+  }
+  50% {
+    border-color: #a8c1ec;
+  }
+  100% {
+    border-color: #cfe2ff;
+  }
+}
+
+/* Aplica animaciones a todas las cards */
+.card.overflow-hidden.shadow.rounded-4 {
+  animation: card-float 3s ease-in-out infinite, card-border 3s linear infinite;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #cfe2ff;
+  transition: box-shadow 0.3s;
+}
+
+/* Glow animación sutil al pasar el mouse */
+.card.overflow-hidden.shadow.rounded-4:hover {
+  animation: card-float 3s ease-in-out infinite, card-glow 1.5s ease-in-out infinite, card-border 3s linear infinite;
+  z-index: 2;
+}
+
+/* Opcional: efecto sutil en imagen dentro de la card */
+.card .img-fluid {
+  transition: transform 0.8s cubic-bezier(.4,2,.7,1), filter 0.8s cubic-bezier(.4,2,.7,1);
+}
+
+.card:hover .img-fluid {
+  transform: scale(1.04) rotate(-1.5deg);
+  filter: brightness(1.05) saturate(1.05);
+} 
+
